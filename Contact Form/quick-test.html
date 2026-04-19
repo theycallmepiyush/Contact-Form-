@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Email Test</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 12px; 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 { color: #333; margin-bottom: 10px; font-size: 28px; }
+        .subtitle { color: #666; margin-bottom: 30px; font-size: 14px; }
+        .form-group { margin-bottom: 20px; }
+        label { 
+            display: block; 
+            color: #333; 
+            font-weight: 600; 
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        input { 
+            width: 100%; 
+            padding: 12px; 
+            border: 2px solid #e0e0e0; 
+            border-radius: 6px; 
+            font-family: inherit; 
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        input:focus { 
+            outline: none; 
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        .btn { 
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; 
+            padding: 14px; 
+            border: none; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.2s;
+        }
+        .btn:hover { transform: translateY(-2px); }
+        .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .result { 
+            margin-top: 25px; 
+            padding: 15px; 
+            border-radius: 6px; 
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; } }
+        .result.success { 
+            background: #d4edda; 
+            border: 2px solid #28a745;
+            color: #155724;
+        }
+        .result.error { 
+            background: #f8d7da; 
+            border: 2px solid #dc3545;
+            color: #721c24;
+        }
+        .result h3 { margin-bottom: 8px; font-size: 16px; }
+        .result p { font-size: 14px; line-height: 1.5; }
+        .spinner { 
+            display: inline-block; 
+            width: 16px; 
+            height: 16px; 
+            border: 3px solid #ccc; 
+            border-top-color: #667eea; 
+            border-radius: 50%; 
+            animation: spin 0.6s linear infinite;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .info-box {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: #333;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>📧 Test Form Email</h1>
+    <p class="subtitle">Submit a test email to verify your form is working</p>
+
+    <div class="info-box">
+        <strong>ℹ️ Info:</strong> This will submit the form with your email. Check your inbox for confirmation emails.
+    </div>
+
+    <form id="testForm">
+        <div class="form-group">
+            <label for="fname">First Name *</label>
+            <input type="text" id="fname" name="fname" value="John" required>
+        </div>
+
+        <div class="form-group">
+            <label for="lname">Last Name *</label>
+            <input type="text" id="lname" name="lname" value="Doe" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="your-email@example.com" required>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" value="+91 9876543210">
+        </div>
+
+        <div class="form-group">
+            <label for="category">Category *</label>
+            <select id="category" name="category" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 6px; font-family: inherit;" required>
+                <option value="">Select...</option>
+                <option value="Billing & Payments">Billing & Payments</option>
+                <option value="Technical Issue" selected>Technical Issue</option>
+                <option value="Account Access">Account Access</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="priority">Priority *</label>
+            <select id="priority" name="priority" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 6px; font-family: inherit;" required>
+                <option value="">Select...</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High" selected>High</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="subject">Subject *</label>
+            <input type="text" id="subject" name="subject" value="Test Submission" required>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 6px; font-family: inherit; min-height: 100px;" required>This is a test email submission to verify the form is working correctly. Please confirm you received this email.</textarea>
+        </div>
+
+        <button type="submit" class="btn">
+            <span class="loading" style="display: none;"><span class="spinner"></span>Sending...</span>
+            <span class="button-text">Send Test Email</span>
+        </button>
+    </form>
+
+    <div id="result" class="result"></div>
+</div>
+
+<script>
+const form = document.getElementById('testForm');
+const resultDiv = document.getElementById('result');
+const loadingSpan = document.querySelector('.loading');
+const buttonText = document.querySelector('.button-text');
+const btn = form.querySelector('button');
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    
+    loadingSpan.style.display = 'inline';
+    buttonText.style.display = 'none';
+    btn.disabled = true;
+
+    try {
+        const response = await fetch('submit.php', {
+            method: 'POST',
+            body: formData
+        });
+
+        const data = await response.json();
+        
+        resultDiv.className = 'result ' + (data.success ? 'success' : 'error');
+        let html = '<h3>' + (data.success ? '✅ Success!' : '❌ Error') + '</h3>';
+        html += '<p>' + data.message + '</p>';
+        
+        if (data.success && data.ticket) {
+            html += '<p><strong>Ticket ID:</strong> ' + data.ticket + '</p>';
+        }
+        
+        resultDiv.innerHTML = html;
+        resultDiv.style.display = 'block';
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    } catch (error) {
+        resultDiv.className = 'result error';
+        resultDiv.innerHTML = '<h3>❌ Network Error</h3><p>' + error.message + '</p>';
+        resultDiv.style.display = 'block';
+    } finally {
+        loadingSpan.style.display = 'none';
+        buttonText.style.display = 'inline';
+        btn.disabled = false;
+    }
+});
+</script>
+
+</body>
+</html>

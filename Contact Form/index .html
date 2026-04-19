@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Customer Support — HelpDesk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,600;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style  C:\xampp\htdocs\contact-form\tickets.log  C:\xampp\htdocs\contact-form\tickets.log.css"/>
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- ── TOP NAV ── -->
+    <header class="topbar">
+      <div class="topbar__inner">
+        <div class="topbar__brand">
+          <div class="brand-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+            </svg>
+          </div>
+          <span class="brand-name">SupportDesk</span>
+        </div>
+        <nav class="topbar__nav" aria-label="Support navigation">
+          <a href="#">Help Center</a>
+          <a href="#">Documentation</a>
+          <a href="#">System Status</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ── HERO ── -->
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero__inner">
+        <div class="hero__badge">
+          <span class="badge-dot" aria-hidden="true"></span>
+          Support team is online
+        </div>
+        <h1 class="hero__title" id="heroTitle">
+          How can we <em>help you</em> today?
+        </h1>
+        <p class="hero__sub">
+          Submit a support request and our team will respond within 1 business day.
+          For urgent issues, please call our helpline directly.
+        </p>
+        <div class="hero__stats" aria-label="Support statistics">
+          <div class="stat">
+            <span class="stat__num">98%</span>
+            <span class="stat__label">Resolution Rate</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat">
+            <span class="stat__num">&lt; 4h</span>
+            <span class="stat__label">Avg. Response Time</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat">
+            <span class="stat__num">24/7</span>
+            <span class="stat__label">Critical Support</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MAIN CONTENT ── -->
+    <main class="main-content">
+      <div class="content-grid">
+
+        <!-- LEFT: Form -->
+        <div class="form-card" role="region" aria-label="Support request form">
+
+          <div class="form-card__header">
+            <h2>Submit a Support Request</h2>
+            <p>Please provide as much detail as possible so we can resolve your issue efficiently.</p>
+          </div>
+
+          <!-- Success State -->
+          <div class="success-state" id="successState" hidden aria-live="polite">
+            <div class="success-state__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <h3>Request Submitted Successfully</h3>
+            <p>Your support ticket has been created. You will receive a confirmation email shortly with your ticket reference number.</p>
+            <div class="ticket-ref" aria-label="Ticket reference number">
+              Ticket # <strong id="ticketNumber">SUP-000000</strong>
+            </div>
+            <button class="btn-outline" id="sendAnotherBtn" type="button">Submit Another Request</button>
+          </div>
+
+          <!-- Form -->
+          <form id="contactForm" class="support-form" novalidate>
+
+            <!-- Personal Info -->
+            <fieldset class="form-section">
+              <legend class="form-section__title">
+                <span class="section-num" aria-hidden="true">01</span>
+                Personal Information
+              </legend>
+
+              <div class="field-row">
+                <div class="field" id="field-fname">
+                  <label for="fname">First Name <span class="req" aria-hidden="true">*</span></label>
+                  <input type="text" id="fname" name="fname" placeholder="e.g. John"
+                    autocomplete="given-name" aria-required="true" aria-describedby="fnameErr"/>
+                  <span class="error-msg" id="fnameErr" role="alert"></span>
+                </div>
+                <div class="field" id="field-lname">
+                  <label for="lname">Last Name <span class="req" aria-hidden="true">*</span></label>
+                  <input type="text" id="lname" name="lname" placeholder="e.g. Smith"
+                    autocomplete="family-name" aria-required="true" aria-describedby="lnameErr"/>
+                  <span class="error-msg" id="lnameErr" role="alert"></span>
+                </div>
+              </div>
+
+              <div class="field-row">
+                <div class="field" id="field-email">
+                  <label for="email">Email Address <span class="req" aria-hidden="true">*</span></label>
+                  <input type="email" id="email" name="email" placeholder="john.smith@company.com"
+                    autocomplete="email" aria-required="true" aria-describedby="emailErr"/>
+                  <span class="error-msg" id="emailErr" role="alert"></span>
+                </div>
+                <div class="field" id="field-phone">
+                  <label for="phone">
+                    Phone Number
+                    <span class="label-optional">(Optional)</span>
+                  </label>
+                  <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210"
+                    autocomplete="tel" aria-describedby="phoneErr"/>
+                  <span class="error-msg" id="phoneErr" role="alert"></span>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Issue Details -->
+            <fieldset class="form-section">
+              <legend class="form-section__title">
+                <span class="section-num" aria-hidden="true">02</span>
+                Issue Details
+              </legend>
+
+              <div class="field-row">
+                <div class="field" id="field-category">
+                  <label for="category">Issue Category <span class="req" aria-hidden="true">*</span></label>
+                  <div class="select-wrap">
+                    <select id="category" name="category" aria-required="true" aria-describedby="categoryErr">
+                      <option value="">— Select a category —</option>
+                      <option value="Billing & Payments">Billing &amp; Payments</option>
+                      <option value="Account Access">Account Access</option>
+                      <option value="Technical Issue">Technical Issue</option>
+                      <option value="Product Inquiry">Product Inquiry</option>
+                      <option value="Shipping & Delivery">Shipping &amp; Delivery</option>
+                      <option value="Returns & Refunds">Returns &amp; Refunds</option>
+                      <option value="Other">Other</option>
+                    </select>
+                    <span class="select-chevron" aria-hidden="true">
+                      <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M1 1l4 4 4-4"/></svg>
+                    </span>
+                  </div>
+                  <span class="error-msg" id="categoryErr" role="alert"></span>
+                </div>
+
+                <div class="field" id="field-priority">
+                  <label for="priority">Priority Level <span class="req" aria-hidden="true">*</span></label>
+                  <div class="select-wrap">
+                    <select id="priority" name="priority" aria-required="true" aria-describedby="priorityErr">
+                      <option value="">— Select priority —</option>
+                      <option value="Low">Low — General enquiry</option>
+                      <option value="Medium">Medium — Affecting work</option>
+                      <option value="High">High — Business impact</option>
+                      <option value="Critical">Critical — System down</option>
+                    </select>
+                    <span class="select-chevron" aria-hidden="true">
+                      <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M1 1l4 4 4-4"/></svg>
+                    </span>
+                  </div>
+                  <span class="error-msg" id="priorityErr" role="alert"></span>
+                </div>
+              </div>
+
+              <div class="field" id="field-subject">
+                <label for="subject">Subject <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="subject" name="subject"
+                  placeholder="Brief summary of your issue"
+                  aria-required="true" aria-describedby="subjectErr"/>
+                <span class="error-msg" id="subjectErr" role="alert"></span>
+              </div>
+
+              <div class="field" id="field-message">
+                <label for="message">
+                  Description <span class="req" aria-hidden="true">*</span>
+                </label>
+                <textarea id="message" name="message" rows="5" maxlength="800"
+                  placeholder="Please describe your issue in detail. Include any error messages, steps to reproduce, and what you expected to happen."
+                  aria-required="true" aria-describedby="messageErr messageCharCount"></textarea>
+                <div class="field-meta">
+                  <span class="error-msg" id="messageErr" role="alert"></span>
+                  <span class="char-count" id="messageCharCount" aria-live="polite">0 / 800</span>
+                </div>
+              </div>
+
+              <div class="field" id="field-orderId">
+                <label for="orderId">
+                  Order / Reference ID
+                  <span class="label-optional">(If applicable)</span>
+                </label>
+                <input type="text" id="orderId" name="orderId"
+                  placeholder="e.g. ORD-123456"
+                  aria-describedby="orderIdErr"/>
+                <span class="error-msg" id="orderIdErr" role="alert"></span>
+              </div>
+            </fieldset>
+
+            <!-- Submit -->
+            <div class="form-actions">
+              <p class="form-note">
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm.75 10.5h-1.5v-5h1.5v5zm0-6.5h-1.5V3.5h1.5V5z"/></svg>
+                By submitting this form, you agree to our
+                <a href="#">Privacy Policy</a> and
+                <a href="#">Terms of Service</a>.
+              </p>
+              <button type="submit" class="submit-btn" id="submitBtn">
+                <span class="submit-btn__label">Submit Support Request</span>
+                <span class="submit-btn__spinner" aria-hidden="true"></span>
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- RIGHT: Sidebar info -->
+        <aside class="info-sidebar" aria-label="Support contact information">
+
+          <div class="info-card">
+            <div class="info-card__icon info-card__icon--blue" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.8 19.8 0 01.07 2.18 2 2 0 012.06 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Phone Support</h3>
+              <p>Available Monday – Friday, 9 AM to 6 PM IST</p>
+              <a href="tel:+911800123456" class="info-link">+91 1800 123 456</a>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-card__icon info-card__icon--green" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="3"/>
+                <path d="M2 7l10 7 10-7"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Email Support</h3>
+              <p>We respond to all emails within 1 business day</p>
+              <a href="mailto:support@helpdesk.com" class="info-link">support@helpdesk.com</a>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-card__icon info-card__icon--orange" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Business Hours</h3>
+              <p>Mon – Fri: 9:00 AM – 6:00 PM IST<br/>Sat: 10:00 AM – 2:00 PM IST</p>
+            </div>
+          </div>
+
+          <div class="info-card info-card--highlight">
+            <h3>
+              <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" style="width:14px;height:14px;vertical-align:-1px;margin-right:6px;"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm.75 12h-1.5V7h1.5v5zm0-6.5h-1.5v-1.5h1.5v1.5z"/></svg>
+              Before You Submit
+            </h3>
+            <ul>
+              <li>Check our <a href="#">Help Center</a> for instant answers</li>
+              <li>Review the <a href="#">Known Issues</a> page</li>
+              <li>Check <a href="#">System Status</a> for outages</li>
+            </ul>
+          </div>
+
+        </aside>
+
+      </div>
+    </main>
+
+    <!-- ── FOOTER ── -->
+    <footer class="footer">
+      <div class="footer__inner">
+        <p>© 2026 SupportDesk. All rights reserved.</p>
+        <div class="footer__links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- .page -->
+
+  <script src="script.js?v=2"></script>
+</body>
+</html>
